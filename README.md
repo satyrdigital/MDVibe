@@ -33,6 +33,12 @@
 - **English, Ukrainian and Russian interface** — follows the Windows language, switchable any time
 - **Private and safe** — works offline, no telemetry, scripts never run, remote images only when you allow them
 
+<p align="center">
+  <img src="docs/site/assets/screens/reading-layout.webp" width="260" alt="Reading layout panel">
+  &nbsp;
+  <img src="docs/site/assets/screens/settings.webp" width="520" alt="Settings window">
+</p>
+
 ## Download
 
 **[Download MDVibe for Windows](https://github.com/satyrdigital/mdvibe/releases/latest/download/MDVibe-Setup.exe)** · project page: **[satyrdigital.github.io/mdvibe](https://satyrdigital.github.io/mdvibe/)**

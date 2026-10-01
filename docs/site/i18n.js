@@ -33,6 +33,11 @@
       'f7.text': 'Коли інша програма змінює файл, MDVibe оновлює його й зберігає місце читання. Кожен файл відкривається у власному вікні.',
       'screens.title': 'Спокійно вдень і вночі',
       'screens.caption': 'Той самий документ у світлій і темній темі.',
+      'look.title': 'Налаштуйте під себе',
+      'look.layout': 'Макет читання: шаблони, шрифт, розмір, ширина — і посторінковий вигляд для друку.',
+      'look.layout.alt': 'Панель макета читання з шаблонами, шрифтом, розміром, інтервалом, шириною й параметрами сторінки',
+      'look.settings': 'Налаштування: тема, стиль Markdown та інше — в одному спокійному вікні.',
+      'look.settings.alt': 'Вікно налаштувань: тема, стиль Markdown і акцентний колір заголовків',
       'privacy.title': 'Приватність за замовчуванням',
       'privacy.1': 'Без реклами й без стеження — у MDVibe немає жодної аналітики.',
       'privacy.2': 'Файли залишаються на вашому комп’ютері. Документи нікуди не завантажуються.',
@@ -84,6 +89,11 @@
       'f7.text': 'Когда другая программа меняет файл, MDVibe обновляет его и сохраняет место чтения. Каждый файл открывается в своём окне.',
       'screens.title': 'Спокойно днём и ночью',
       'screens.caption': 'Один и тот же документ в светлой и тёмной теме.',
+      'look.title': 'Настройте под себя',
+      'look.layout': 'Макет чтения: шаблоны, шрифт, размер, ширина — и постраничный вид для печати.',
+      'look.layout.alt': 'Панель макета чтения с шаблонами, шрифтом, размером, интервалом, шириной и параметрами страницы',
+      'look.settings': 'Настройки: тема, стиль Markdown и другое — в одном спокойном окне.',
+      'look.settings.alt': 'Окно настроек: тема, стиль Markdown и акцентный цвет заголовков',
       'privacy.title': 'Приватность по умолчанию',
       'privacy.1': 'Без рекламы и без слежки — в MDVibe нет никакой аналитики.',
       'privacy.2': 'Файлы остаются на вашем компьютере. Документы никуда не загружаются.',
@@ -112,8 +122,10 @@
 
   var LANGS = ['en', 'uk', 'ru'];
   var nodes = document.querySelectorAll('[data-i18n]');
+  var alts = document.querySelectorAll('[data-i18n-alt]');
   var english = {};
   for (var i = 0; i < nodes.length; i++) english[nodes[i].getAttribute('data-i18n')] = nodes[i].textContent;
+  for (var a = 0; a < alts.length; a++) english[alts[a].getAttribute('data-i18n-alt')] = alts[a].getAttribute('alt');
   english['doc.title'] = document.title;
 
   function apply(lang) {
@@ -122,6 +134,10 @@
       var key = nodes[i].getAttribute('data-i18n');
       var text = (dict && dict[key]) || english[key];
       if (text) nodes[i].textContent = text;
+    }
+    for (var a = 0; a < alts.length; a++) {
+      var akey = alts[a].getAttribute('data-i18n-alt');
+      alts[a].setAttribute('alt', (dict && dict[akey]) || english[akey]);
     }
     document.title = (dict && dict['doc.title']) || english['doc.title'];
     document.documentElement.lang = lang;

@@ -131,6 +131,13 @@ section.alt { background: var(--surface); border-top: 1px solid var(--line); bor
 .mini .code { padding: 14px; }
 .caption { color: var(--muted); font-size: 15px; text-align: center; margin: 14px 0 0; }
 
+/* Closer look (real screenshots) */
+.look { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.look figure { margin: 0; }
+.look img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 16px 40px rgba(27, 30, 43, 0.1); }
+.look figcaption { color: var(--muted); font-size: 15px; margin-top: 12px; }
+.look-wide { align-self: center; }
+
 /* Features */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
 .grid article { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; }
@@ -157,7 +164,8 @@ footer a { color: #eef0fa; }
 
 @media (max-width: 860px) {
   .hero { padding-top: 36px; }
-  .hero-grid, .two, .screens { grid-template-columns: 1fr; gap: 36px; }
+  .hero-grid, .two, .screens, .look { grid-template-columns: 1fr; gap: 36px; }
+  .look-tall { max-width: 330px; margin: 0 auto !important; }
   .nav { display: none; }
   .lang { margin-left: auto; }
   .btn.big { width: 100%; justify-content: center; }
