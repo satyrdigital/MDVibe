@@ -43,7 +43,7 @@
 
 ## Download
 
-**[Download MDVibe for Windows](https://github.com/satyrdigital/mdvibe/releases/latest/download/MDVibe-Setup.exe)** · project page: **[satyrdigital.github.io/MDVibe](https://satyrdigital.github.io/MDVibe/)**
+**[Download MDVibe for Windows](https://github.com/satyrdigital/mdvibe/releases/latest/download/MDVibe-Setup.exe)** · project page: **[satyrdigital.github.io/mdvibe](https://satyrdigital.github.io/mdvibe/)**
 
 All files of every version are on the **[Releases](https://github.com/satyrdigital/mdvibe/releases/latest)** page:
 
