@@ -1,0 +1,57 @@
+name: Bug report
+description: Something does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please do not include private documents or personal data.
+        Security problems: please follow SECURITY.md instead.
+  - type: input
+    id: version
+    attributes:
+      label: MDVibe version
+      description: Menu → Help → About MDVibe
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a file with …
+        2. Click …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: Sample Markdown (optional)
+      description: The smallest snippet that shows the problem.
+      render: markdown
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt (optional)
+      description: Menu → Help → Open Log Folder. The log never contains document content.
+      render: text

@@ -1,0 +1,45 @@
+[package]
+name = "mdvibe"
+version = "0.1.0"
+description = "MDVibe — fast, clean Markdown viewer"
+authors = ["Andrii Shumak"]
+license-file = "../../../LICENSING.md"
+edition = "2021"
+rust-version = "1.89"
+publish = false
+
+[lib]
+name = "mdvibe_lib"
+crate-type = ["rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+notify = { version = "8", default-features = false, features = ["macos_fsevent"] }
+encoding_rs = "0.8"
+chardetng = "1"
+dunce = "1"
+log = { version = "0.4", features = ["std"] }
+percent-encoding = "2"
+tokio = { version = "1", features = ["time"] }
+
+[target.'cfg(windows)'.dependencies]
+webview2-com = "0.39"
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging", "Win32_UI_Shell", "Win32_System_Com", "Win32_System_Registry"] }
+windows-core = "0.62"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "unwind"
+strip = true

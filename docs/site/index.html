@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MDVibe — fast, clean Markdown viewer for Windows</title>
+  <meta name="description" content="MDVibe is a free, fast and private Markdown viewer for Windows. GitHub Flavored Markdown, syntax highlighting, outline, dark mode, print and PDF. Every document opens in its own window.">
+  <meta property="og:title" content="MDVibe — Markdown viewer for Windows">
+  <meta property="og:description" content="Double-click a .md file — read it, beautifully.">
+  <meta property="og:image" content="assets/social-preview-1280x640.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="brand" href="#"><img src="assets/mdvibe-icon.svg" width="28" height="28" alt=""><span>MD<b>Vibe</b></span></a>
+      <nav><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="{{REPO_URL}}">GitHub</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <img class="hero-icon" src="assets/mdvibe-icon.svg" width="72" height="72" alt="MDVibe icon">
+          <h1>Markdown, made calm.</h1>
+          <p class="lead">A fast, clean Markdown viewer for Windows. Double-click a <code>.md</code> file and read it the way GitHub renders it — every document in its own window.</p>
+          <div class="cta">
+            <a class="btn primary" href="{{RELEASES_URL}}">Download for Windows</a>
+            <a class="btn" href="{{REPO_URL}}">View on GitHub</a>
+          </div>
+          <p class="small">Free · Windows 10 &amp; 11 · No telemetry</p>
+        </div>
+        <div class="shot" role="img" aria-label="MDVibe window showing a Markdown document">
+          <!-- Replace with assets/hero-light.png when screenshots are ready -->
+          <div class="win">
+            <div class="win-bar"><span></span><span></span><span></span></div>
+            <div class="win-body">
+              <div class="win-side"><i class="on"></i><i></i><i></i><i class="sub"></i><i></i></div>
+              <div class="win-doc">
+                <b class="h1"></b><i></i><i></i><i class="short"></i>
+                <div class="code"><i></i><i class="short"></i><i></i></div>
+                <i></i><i class="short"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="alt">
+      <div class="wrap">
+        <h2>Everything you need to read Markdown. Nothing you don't.</h2>
+        <div class="grid">
+          <article><h3>GitHub Flavored Markdown</h3><p>Tables, task lists, footnotes, alerts and autolinks render like on GitHub.</p></article>
+          <article><h3>Code that looks like code</h3><p>Syntax highlighting, language labels, line numbers and one-click Copy.</p></article>
+          <article><h3>One window per document</h3><p>Open five files, get five independent windows. Nothing gets replaced.</p></article>
+          <article><h3>Live reload</h3><p>Keeps your place while an editor or an AI agent rewrites the file.</p></article>
+          <article><h3>Outline &amp; Recent</h3><p>Jump through headings; reopen pinned and recent files. Hide the sidebar anytime.</p></article>
+          <article><h3>Reading layouts</h3><p>Comfortable, Compact, Wide or Book presets — plus page view, print and PDF.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap two">
+        <div>
+          <h2>Opens from Windows Explorer</h2>
+          <p>MDVibe registers itself for <code>.md</code> and <code>.markdown</code> without taking over your current default. Right-click a file → <b>Open with</b> → <b>MDVibe</b> → <b>Always use this app</b>.</p>
+        </div>
+        <div>
+          <h2>Light, dark, or system</h2>
+          <p>A calm reading theme in both modes, with an Enhanced or Neutral Markdown style and adjustable fonts, sizes and widths.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="alt">
+      <div class="wrap">
+        <h2>Private by default</h2>
+        <ul class="checks">
+          <li>No telemetry, analytics, accounts or cloud — your documents never leave your PC.</li>
+          <li>Remote images are blocked until you allow them, so opening a file doesn't reveal your IP.</li>
+          <li>Scripts in documents never run, and links never launch programs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap support">
+        <h2>Free, and it stays that way</h2>
+        <p>MDVibe has no ads, no paywalls and no nags. If it saves you time, you can support its development.</p>
+        <a class="btn" href="{{SUPPORT_URL}}" data-optional>Support the project ♥</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span><img src="assets/mdvibe-icon.svg" width="20" height="20" alt=""> MDVibe</span>
+      <span>Created by Andrii Shumak · <a href="https://satyr.digital">Satyr Digital</a></span>
+      <span>Copyright © 2026 Andrii Shumak</span>
+    </div>
+  </footer>
+</body>
+</html>

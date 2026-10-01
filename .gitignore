@@ -1,0 +1,52 @@
+# --- Local-only folders (never public) ---
+/promo/
+/temp/
+
+# --- Release artifacts: published via GitHub Releases, never committed ---
+/dist/
+
+# --- Internal documentation stays local; only the public site source is tracked ---
+/docs/*
+!/docs/site/
+
+# --- Reference material (original prototype), local only ---
+/dev/reference/
+
+# --- Node / frontend ---
+node_modules/
+.vite/
+dev/app/build/
+*.tsbuildinfo
+coverage/
+/_site/
+
+# --- Rust / Tauri ---
+target/
+dev/app/src-tauri/gen/schemas/
+
+# --- IDE / OS ---
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.user
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Logs / test output / local config / secrets ---
+*.log
+logs/
+test-results/
+.env
+.env.*
+*.local.json
+*.pfx
+*.p12
+*.cer
+*.crt
+*.key
+*.pem
+*.snk
+*.keystore

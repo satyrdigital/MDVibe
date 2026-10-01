@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: dev/app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: dev/app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: dev/app/src-tauri
+
+      - name: Install
+        run: npm ci
+
+      - name: Metadata and notices are in sync
+        working-directory: .
+        run: |
+          node dev/scripts/sync-metadata.mjs --check
+          node dev/scripts/third-party.mjs --check
+
+      - name: Type check
+        run: npm run check
+
+      - name: Unit tests (renderer, sanitizer, settings)
+        run: npm test
+
+      - name: Build UI
+        run: npm run build:web
+
+      - name: Rust format
+        working-directory: dev/app/src-tauri
+        run: cargo fmt --check
+
+      - name: Rust lint
+        working-directory: dev/app/src-tauri
+        run: cargo clippy --all-targets --locked -- -D warnings
+
+      - name: Rust tests
+        working-directory: dev/app/src-tauri
+        run: cargo test --locked
+
+      - name: Dependency audit (production, high severity)
+        run: npm audit --omit=dev --audit-level=high

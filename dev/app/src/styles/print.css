@@ -1,0 +1,146 @@
+/*
+ * Print and PDF. Only the document is printed — never the toolbar, sidebar,
+ * banners, menus or Copy buttons. Colors are light unless the user chose
+ * "Print & PDF colors: Same as screen". Page size/margins come from the
+ * @page rule generated from settings (layout.ts).
+ */
+@media print {
+  :root[data-print-theme='light'] {
+    color-scheme: light;
+    --bg-app: #ffffff;
+    --bg-sunken: #f4f3ef;
+    --bg-raised: #ffffff;
+    --border: #d9d8d1;
+    --border-strong: #c4c2b8;
+    --text: #1b1e2b;
+    --text-muted: #555a6a;
+    --text-faint: #7d8190;
+    --primary: #3b5bdb;
+    --primary-strong: #2b44b0;
+    --accent-text: #2b44b0;
+    --accent-soft: #eef1fe;
+    --heading-accent: #2b44b0;
+    --hl-comment: #6e7381;
+    --hl-keyword: #c2255c;
+    --hl-string: #2b7a3d;
+    --hl-number: #a15c00;
+    --hl-title: #3b5bdb;
+    --hl-type: #7048e8;
+    --hl-attr: #0b7285;
+    --hl-meta: #8a6d00;
+    --hl-variable: #b34700;
+  }
+
+  html,
+  body,
+  .app,
+  .workspace,
+  .viewport,
+  .canvas,
+  .sheet {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    background: var(--bg-app) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .canvas,
+  .sheet,
+  .viewport[data-view='page'] .canvas,
+  .viewport[data-view='page'] .sheet {
+    max-width: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    zoom: 1 !important;
+    background-image: none !important;
+  }
+
+  .toolbar,
+  .sidebar,
+  .banners,
+  .find-bar,
+  .popover,
+  .menu,
+  .modal-backdrop,
+  .toast-host,
+  .drop-overlay,
+  .state-view,
+  .code-head,
+  .code-copy {
+    display: none !important;
+  }
+
+  :root:not([data-print-bg='true']) .md .code-frame,
+  :root:not([data-print-bg='true']) .md th,
+  :root:not([data-print-bg='true']) .md blockquote,
+  :root:not([data-print-bg='true']) .md .markdown-alert,
+  :root:not([data-print-bg='true']) .md :not(pre) > code {
+    background: transparent !important;
+  }
+
+  .md.large > * {
+    content-visibility: visible !important;
+  }
+
+  .md {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .md h1,
+  .md h2,
+  .md h3,
+  .md h4,
+  .md h5,
+  .md h6 {
+    break-after: avoid-page;
+    break-inside: avoid;
+  }
+
+  /* Short blocks stay whole; long code/tables are allowed to continue. */
+  .md .code-frame,
+  .md blockquote,
+  .md .markdown-alert,
+  .md img,
+  .md tr {
+    break-inside: avoid;
+  }
+
+  .md pre.code-block {
+    white-space: pre-wrap !important;
+    word-break: break-word;
+    overflow: visible !important;
+    padding-top: 12px;
+  }
+
+  .md .code-gutter {
+    display: none;
+  }
+
+  .md .table-wrap {
+    overflow: visible !important;
+  }
+
+  .md thead {
+    display: table-header-group;
+  }
+
+  .md a {
+    color: var(--accent-text);
+    text-decoration: underline;
+  }
+
+  .md .img-blocked {
+    border-style: solid;
+  }
+
+  .source-view {
+    white-space: pre-wrap !important;
+    word-break: break-word;
+  }
+}

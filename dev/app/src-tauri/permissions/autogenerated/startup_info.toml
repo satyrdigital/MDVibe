@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-startup-info"
+description = "Enables the startup_info command without any pre-configured scope."
+commands.allow = ["startup_info"]
+
+[[permission]]
+identifier = "deny-startup-info"
+description = "Denies the startup_info command without any pre-configured scope."
+commands.deny = ["startup_info"]

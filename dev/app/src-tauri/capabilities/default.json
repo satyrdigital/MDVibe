@@ -1,0 +1,37 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The single MDVibe window: app commands plus the minimal window/event APIs. No filesystem, shell, HTTP or dialog plugin access from the renderer.",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "core:window:allow-set-fullscreen",
+    "core:window:allow-is-fullscreen",
+    "core:window:allow-set-always-on-top",
+    "core:window:allow-close",
+    "core:window:allow-set-theme",
+    "core:window:allow-set-focus",
+    "allow-startup-info",
+    "allow-open-document",
+    "allow-reload-document",
+    "allow-pick-markdown-file",
+    "allow-open-in-new-window",
+    "allow-activate-link",
+    "allow-open-external",
+    "allow-reveal-in-folder",
+    "allow-settings-save",
+    "allow-recent-list",
+    "allow-recent-remove",
+    "allow-recent-set-pinned",
+    "allow-recent-clear",
+    "allow-export-pdf",
+    "allow-log-message",
+    "allow-open-log-folder",
+    "allow-app-ready",
+    "allow-settings-load",
+    "allow-open-notices"
+  ]
+}

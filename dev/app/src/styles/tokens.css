@@ -1,0 +1,142 @@
+/*
+ * Design tokens — brand style "Paper" (see dev/assets/brand/tokens.json and
+ * the design specification). Neutral, minimal; one primary color; amber is
+ * reserved for the logo fold and never used for UI controls.
+ */
+@import '@fontsource-variable/manrope/wght.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
+
+:root {
+  /* spacing scale */
+  --s-1: 2px;
+  --s-2: 4px;
+  --s-3: 8px;
+  --s-4: 12px;
+  --s-5: 16px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 48px;
+
+  /* radii: controls/cards 6, window-like frames 12 */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-lg: 12px;
+
+  /* typography */
+  --ui-font: 'Manrope Variable', Manrope, 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ui-size: 13.5px;
+  --mono-font: 'JetBrains Mono Variable', 'JetBrains Mono', 'Cascadia Mono', Consolas, 'SF Mono', Menlo, monospace;
+
+  /* layout */
+  --toolbar-h: 44px;
+  --sidebar-w: 240px;
+
+  /* document layout (overridden live from settings) */
+  --doc-font: var(--ui-font);
+  --doc-size: 16px;
+  --doc-line: 1.65;
+  --doc-width: 760px;
+  --doc-margin: 48px;
+  --doc-zoom: 1;
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --page-margin: 18mm;
+
+  --dur: 120ms;
+}
+
+/* ---------- Light (Paper) ---------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --primary: #3b5bdb;
+  --primary-strong: #2b44b0;
+  --secondary: #e7ecff;
+  --brand-amber: #ffb84d;
+
+  --bg-app: #fafaf8; /* document surface */
+  --bg-chrome: #ffffff; /* toolbar, sidebar */
+  --bg-raised: #ffffff; /* menus, dialogs */
+  --bg-sunken: #f0efea; /* code */
+  --bg-hover: rgba(27, 30, 43, 0.05);
+  --bg-active: var(--secondary);
+  --bg-canvas: #ecebe5; /* behind sheets in page view */
+  --border: #e3e2dc;
+  --border-strong: #cfcdc4;
+  --text: #1b1e2b;
+  --text-muted: #666b7c;
+  --text-faint: #8d91a0;
+  --accent: var(--primary);
+  --accent-hover: var(--primary-strong);
+  --accent-text: var(--primary-strong);
+  --accent-soft: var(--secondary);
+  --accent-contrast: #ffffff;
+  --heading-accent: var(--primary-strong);
+  --focus: var(--primary);
+  --selection: var(--secondary);
+  --danger: #c4302b;
+  --warn-bg: #fff6e6;
+  --warn-border: #f1d6a6;
+  --info-bg: #f2f4fe;
+  --info-border: #d9e0fc;
+  --float-shadow: 0 8px 24px rgba(27, 30, 43, 0.08);
+  --sheet-shadow: 0 1px 3px rgba(27, 30, 43, 0.08);
+  --find-hit: rgba(255, 184, 77, 0.45);
+  --find-current: rgba(255, 140, 0, 0.75);
+
+  --alert-note: #3b5bdb;
+  --alert-tip: #1a7f37;
+  --alert-important: #7048e8;
+  --alert-warning: #9a6700;
+  --alert-caution: #cf222e;
+}
+
+/* ---------- Dark (Paper, derived) ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --primary: #7c93f5;
+  --primary-strong: #a9b9ff;
+  --secondary: #252c55;
+
+  --bg-app: #14161f;
+  --bg-chrome: #1b1e2b;
+  --bg-raised: #1f2232;
+  --bg-sunken: #0f1118;
+  --bg-hover: rgba(238, 240, 250, 0.06);
+  --bg-active: var(--secondary);
+  --bg-canvas: #0d0f15;
+  --border: #2e3246;
+  --border-strong: #3d4259;
+  --text: #eef0fa;
+  --text-muted: #a0a6c0;
+  --text-faint: #7a809a;
+  --accent: var(--primary);
+  --accent-hover: var(--primary-strong);
+  --accent-text: var(--primary-strong);
+  --accent-soft: var(--secondary);
+  --accent-contrast: #14161f;
+  --heading-accent: var(--primary-strong);
+  --focus: var(--primary);
+  --selection: #2f3a78;
+  --danger: #ff7b72;
+  --warn-bg: #2a2416;
+  --warn-border: #5a4a22;
+  --info-bg: #1c2140;
+  --info-border: #2f3767;
+  --float-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --sheet-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --find-hit: rgba(255, 184, 77, 0.3);
+  --find-current: rgba(255, 140, 0, 0.65);
+
+  --alert-note: #7c93f5;
+  --alert-tip: #4ac26b;
+  --alert-important: #b197fc;
+  --alert-warning: #d29922;
+  --alert-caution: #ff7b72;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur: 0ms;
+  }
+}

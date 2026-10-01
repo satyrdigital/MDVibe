@@ -1,0 +1,34 @@
+{
+  "$comment": "Canonical project metadata. Single source of truth: run `npm run sync-metadata` in dev/app after editing. Empty URL = feature hidden in the app.",
+  "productName": "MDVibe",
+  "version": "0.1.0",
+  "identifier": "digital.satyr.mdvibe",
+  "executableName": "MDVibe",
+  "tagline": "Markdown, made calm.",
+  "description": "MDVibe is a fast, privacy-friendly Markdown viewer. Every document opens in its own window.",
+  "author": "Andrii Shumak",
+  "publisher": "Satyr Digital",
+  "copyrightHolder": "Andrii Shumak",
+  "copyrightYear": "2026",
+  "copyright": "Copyright © 2026 Andrii Shumak",
+  "contactEmail": "satyrdigital@gmail.com",
+  "urls": {
+    "website": "https://satyr.digital",
+    "repository": "https://github.com/satyrdigital/mdvibe",
+    "issues": "https://github.com/satyrdigital/mdvibe/issues",
+    "releases": "https://github.com/satyrdigital/mdvibe/releases/latest",
+    "support": "",
+    "license": ""
+  },
+  "social": {
+    "github": "",
+    "linkedin": "",
+    "instagram": "",
+    "facebook": "",
+    "x": ""
+  },
+  "license": {
+    "spdx": "",
+    "status": "License not yet selected — see LICENSING.md"
+  }
+}

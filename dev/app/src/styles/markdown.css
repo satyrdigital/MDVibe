@@ -1,0 +1,376 @@
+/*
+ * Rendered Markdown. Two styles:
+ *   enhanced (default) — structure is visible: link color, tinted quotes,
+ *                        framed tables and code, optional heading accent;
+ *   neutral            — near-monochrome, minimal accents.
+ */
+
+.md {
+  font-family: var(--doc-font);
+  font-size: var(--doc-size);
+  font-weight: 500;
+  line-height: var(--doc-line);
+  color: var(--text);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Large documents: skip layout and paint of off-screen blocks (7–10× faster
+   first layout on multi-megabyte files). Scroll anchoring keeps positions stable. */
+.md.large > * {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 160px;
+}
+
+.md > :first-child {
+  margin-top: 0 !important;
+}
+
+.md > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.md p,
+.md ul,
+.md ol,
+.md dl,
+.md blockquote,
+.md .table-wrap,
+.md .code-frame,
+.md pre,
+.md details,
+.md .markdown-alert {
+  margin: 0 0 1em;
+}
+
+/* ---------- headings ---------- */
+
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6 {
+  margin: 1.6em 0 0.6em;
+  line-height: 1.25;
+  color: var(--text);
+  scroll-margin-top: 16px;
+}
+
+.md h1 {
+  font-size: 1.875em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+
+.md h2 {
+  font-size: 1.375em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--border);
+}
+
+.md h3 {
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.md h4 {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.md h5,
+.md h6 {
+  font-size: 0.9em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+:root[data-mdstyle='enhanced'][data-heading-accent='true'] .md :is(h1, h2, h3) {
+  color: var(--heading-accent);
+}
+
+/* ---------- inline ---------- */
+
+.md strong,
+.md b {
+  font-weight: 800;
+}
+
+.md a {
+  color: var(--accent-text);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+.md a:hover {
+  text-decoration: underline;
+}
+
+:root[data-mdstyle='neutral'] .md a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--text-faint);
+}
+
+.md code,
+.md kbd,
+.md samp {
+  font-family: var(--mono-font);
+  font-size: 0.86em;
+}
+
+.md :not(pre) > code {
+  padding: 0.12em 0.38em;
+  border-radius: var(--r-xs);
+  background: var(--bg-sunken);
+}
+
+:root[data-mdstyle='enhanced'] .md :not(pre) > code {
+  color: var(--accent-text);
+  background: var(--accent-soft);
+}
+
+.md kbd {
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: var(--r-xs);
+  background: var(--bg-raised);
+}
+
+.md mark {
+  background: rgba(255, 184, 77, 0.4);
+  color: inherit;
+}
+
+.md sub,
+.md sup {
+  font-size: 0.75em;
+}
+
+.md del,
+.md s {
+  color: var(--text-muted);
+}
+
+.md hr {
+  height: 1px;
+  margin: 2em 0;
+  border: 0;
+  background: var(--border);
+}
+
+/* ---------- lists ---------- */
+
+.md ul,
+.md ol {
+  padding-left: 1.8em;
+}
+
+.md li + li {
+  margin-top: 0.25em;
+}
+
+.md li > ul,
+.md li > ol,
+.md li > p {
+  margin: 0.25em 0 0;
+}
+
+.md ul.contains-task-list {
+  list-style: none;
+  padding-left: 0.4em;
+}
+
+.md .task-list-item {
+  display: block;
+}
+
+.md .task-list-item > ul.contains-task-list {
+  padding-left: 1.6em;
+}
+
+.md .task-box {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  margin: 0 0.5em 0 0;
+  vertical-align: -0.12em;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 3px;
+  background: var(--bg-raised);
+}
+
+.md .task-box.checked {
+  border-color: var(--primary);
+  background: var(--primary)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 90% no-repeat;
+}
+
+.md dt {
+  font-weight: 700;
+}
+
+.md dd {
+  margin: 0 0 0.5em 1.5em;
+}
+
+/* ---------- quotes & alerts ---------- */
+
+.md blockquote {
+  padding: 0.1em 1em;
+  border-left: 3px solid var(--border-strong);
+  color: var(--text-muted);
+}
+
+:root[data-mdstyle='enhanced'] .md blockquote {
+  border-left-color: var(--primary);
+  background: var(--bg-sunken);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 0.6em 1em;
+}
+
+.md blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.md .markdown-alert {
+  --alert: var(--alert-note);
+  padding: 0.6em 1em;
+  border-left: 3px solid var(--alert);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: color-mix(in srgb, var(--alert) 7%, transparent);
+}
+
+.md .markdown-alert > :last-child {
+  margin-bottom: 0;
+}
+
+.md .markdown-alert-title {
+  margin: 0 0 0.3em;
+  font-weight: 800;
+  color: var(--alert);
+}
+
+.md .markdown-alert-tip {
+  --alert: var(--alert-tip);
+}
+.md .markdown-alert-important {
+  --alert: var(--alert-important);
+}
+.md .markdown-alert-warning {
+  --alert: var(--alert-warning);
+}
+.md .markdown-alert-caution {
+  --alert: var(--alert-caution);
+}
+
+/* ---------- tables ---------- */
+
+.md .table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.md table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.94em;
+  line-height: 1.5;
+}
+
+.md th,
+.md td {
+  padding: 0.45em 0.85em;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.md th {
+  font-weight: 700;
+  text-align: left;
+}
+
+:root[data-mdstyle='enhanced'] .md th {
+  background: var(--bg-sunken);
+}
+
+:root[data-mdstyle='enhanced'] .md tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--bg-sunken) 45%, transparent);
+}
+
+/* ---------- media & misc ---------- */
+
+.md img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--r-xs);
+  vertical-align: middle;
+}
+
+.md [align='center'] {
+  text-align: center;
+}
+
+.md [align='right'] {
+  text-align: right;
+}
+
+.md .img-blocked {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 0.05em 0.5em;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-xs);
+  color: var(--text-muted);
+  font-size: 0.8em;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.md .img-blocked::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='1.6'%3E%3Crect x='3' y='4' width='14' height='12' rx='1.8'/%3E%3Ccircle cx='7.5' cy='8.5' r='1.3'/%3E%3Cpath d='m3.5 14 4-4 3 3 2-2 4 4'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+.md details {
+  padding: 0.4em 0.8em;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.md summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.md details[open] > summary {
+  margin-bottom: 0.4em;
+}
+
+.md .footnotes {
+  margin-top: 2.5em;
+  font-size: 0.88em;
+  color: var(--text-muted);
+}
+
+.md .footnotes-sep {
+  margin-top: 2.5em;
+}
+
+.md .footnote-ref a,
+.md .footnote-backref {
+  text-decoration: none;
+}

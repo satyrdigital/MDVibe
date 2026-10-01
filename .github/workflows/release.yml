@@ -1,0 +1,73 @@
+# Builds release artifacts and creates a DRAFT GitHub Release.
+# Releases are published manually from the draft.
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version tag to build (e.g. v0.1.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      # Code signing is optional: configure these repository secrets to enable it.
+      SIGN_CERT_PFX_BASE64: ${{ secrets.WINDOWS_CERTIFICATE_PFX_BASE64 }}
+      SIGN_CERT_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: dev/app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: dev/app/src-tauri
+
+      - name: Validate version against tag
+        shell: pwsh
+        run: node dev/scripts/sync-metadata.mjs --check --tag $env:TAG
+
+      - name: Install and test
+        working-directory: dev/app
+        run: |
+          npm ci
+          npm run check
+          npm test
+
+      # The bundler calls dev/scripts/sign.ps1 for the exe, the uninstaller and
+      # the installer (bundle.windows.signCommand). Without the secrets above
+      # the build is unsigned.
+      - name: Build (and sign, if configured)
+        working-directory: dev/app
+        run: npm run app:build
+
+      - name: Package (installer, portable zip, checksums)
+        run: node dev/scripts/package-release.mjs
+
+      - name: Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: MDVibe ${{ env.TAG }}
+          draft: true
+          generate_release_notes: true
+          files: |
+            dist/MDVibe-Setup-*.exe
+            dist/MDVibe-*-win-*.zip
+            dist/SHA256SUMS.txt
