@@ -35,17 +35,20 @@
 
 ## Download
 
-Get the latest version from **[Releases](https://github.com/satyrdigital/mdvibe/releases/latest)**:
+**[Download MDVibe for Windows](https://github.com/satyrdigital/mdvibe/releases/latest/download/MDVibe-Setup.exe)** · project page: **[satyrdigital.github.io/mdvibe](https://satyrdigital.github.io/mdvibe/)**
+
+All files of every version are on the **[Releases](https://github.com/satyrdigital/mdvibe/releases/latest)** page:
 
 | File | What it is |
 | --- | --- |
-| `MDVibe-Setup-x.y.z.exe` | Installer (recommended) |
+| `MDVibe-Setup.exe` | Installer of the latest version (recommended) |
+| `MDVibe-Setup-x.y.z.exe` | The same installer, named with its version |
 | `MDVibe-x.y.z-win-x64.zip` | Portable version, no installation |
 | `SHA256SUMS.txt` | Checksums |
 
 ## Installation
 
-1. Run `MDVibe-Setup-x.y.z.exe`. It installs for the current user — no administrator rights needed.
+1. Run `MDVibe-Setup.exe`. It installs for the current user — no administrator rights needed.
 2. Start MDVibe from the Start menu, or open any `.md` file with it.
 
 Requirements: Windows 10 or 11 with the Microsoft Edge WebView2 Runtime (built into
@@ -109,13 +112,16 @@ Found a security problem? Please see [SECURITY.md](SECURITY.md).
 
 ## License
 
-The license has not been chosen yet — see [LICENSING.md](LICENSING.md).
+MDVibe is **source-available** under the [MIT License with the Commons Clause](LICENSE):
+free to use (including at work), study, modify and share; selling MDVibe itself is not
+permitted. It is not an OSI-approved open-source license.
+
 Third-party components: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Author
 
 **Andrii Shumak** · [satyr.digital](https://satyr.digital) · satyrdigital@gmail.com
 
-Published by **Satyr Digital**.
+Published by Satyr Digital.
 
 Copyright © 2026 Andrii Shumak

@@ -18,7 +18,7 @@
     "issues": "https://github.com/satyrdigital/mdvibe/issues",
     "releases": "https://github.com/satyrdigital/mdvibe/releases/latest",
     "support": "",
-    "license": ""
+    "license": "https://github.com/satyrdigital/mdvibe/blob/main/LICENSE"
   },
   "social": {
     "github": "",
@@ -28,7 +28,7 @@
     "x": ""
   },
   "license": {
-    "spdx": "",
-    "status": "License not yet selected — see LICENSING.md"
+    "spdx": "LicenseRef-MIT-Commons-Clause",
+    "name": "MIT + Commons Clause (source-available)"
   }
 }

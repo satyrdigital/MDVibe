@@ -1,5 +1,6 @@
-# Project site (docs/site) on GitHub Pages. Manual only: run it when the site
-# should be published.
+# Project page https://satyrdigital.github.io/mdvibe/ — publishes docs/site as is.
+# Manual only (Actions → Pages → Run workflow). Requires Settings → Pages →
+# Source: GitHub Actions.
 name: Pages
 
 on:
@@ -21,14 +22,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
-          node-version: 22
-      - run: node dev/scripts/build-site.mjs _site
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+          path: docs/site
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

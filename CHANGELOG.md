@@ -33,3 +33,4 @@ First public preview.
 - Installer that registers MDVibe in "Open with" without changing the default app;
   portable build.
 - Local diagnostic log with rotation; no telemetry.
+- Licensed under the MIT License with the Commons Clause (source-available).

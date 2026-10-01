@@ -51,7 +51,8 @@
     ],
     "resources": {
       "icons/md-document.ico": "md-document.ico",
-      "../../../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md"
+      "../../../THIRD_PARTY_NOTICES.md": "THIRD_PARTY_NOTICES.md",
+      "../../../LICENSE": "LICENSE"
     },
     "windows": {
       "allowDowngrades": false,

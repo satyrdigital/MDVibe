@@ -1,4 +1,5 @@
 // Collects release artifacts into dist/:
+//   MDVibe-Setup.exe              installer under a stable name (for releases/latest/download/…)
 //   MDVibe-Setup-<v>.exe         NSIS installer (from the Tauri bundler)
 //   MDVibe-<v>-win-<arch>.zip     portable build (exe + notices + license info)
 //   SHA256SUMS.txt                checksums of everything above
@@ -29,13 +30,16 @@ const setup = fs.readdirSync(nsisDir).find((f) => f.endsWith('-setup.exe') && f.
 if (!setup) throw new Error(`no NSIS installer for ${v} in ${nsisDir}`);
 const setupOut = `${meta.productName}-Setup-${v}${arch === 'x64' ? '' : `-${arch}`}.exe`;
 fs.copyFileSync(path.join(nsisDir, setup), path.join(dist, setupOut));
+// Stable name: the project page links to releases/latest/download/MDVibe-Setup.exe.
+const stableOut = `${meta.productName}-Setup${arch === 'x64' ? '' : `-${arch}`}.exe`;
+fs.copyFileSync(path.join(nsisDir, setup), path.join(dist, stableOut));
 
 // Portable zip
 const stage = path.join(root, 'temp', `portable-${v}-${arch}`);
 fs.rmSync(stage, { recursive: true, force: true });
 fs.mkdirSync(stage, { recursive: true });
 fs.copyFileSync(exe, path.join(stage, `${meta.executableName}.exe`));
-for (const f of ['THIRD_PARTY_NOTICES.md', 'LICENSING.md', 'LICENSE']) {
+for (const f of ['THIRD_PARTY_NOTICES.md', 'LICENSE']) {
   if (fs.existsSync(path.join(root, f))) fs.copyFileSync(path.join(root, f), path.join(stage, f));
 }
 fs.writeFileSync(
@@ -59,7 +63,10 @@ const tar = process.platform === 'win32' ? path.join(process.env.SystemRoot ?? '
 execFileSync(tar, ['-a', '-c', '-f', path.join(dist, zipOut), '-C', stage, '.'], { stdio: 'inherit' });
 
 // Checksums (all artifacts currently in dist/ for this version)
-const files = fs.readdirSync(dist).filter((f) => f.includes(v) && !f.endsWith('.txt')).sort();
+const files = fs
+  .readdirSync(dist)
+  .filter((f) => (f.includes(v) || f === stableOut) && !f.endsWith('.txt'))
+  .sort();
 const sums = files.map((f) => `${crypto.createHash('sha256').update(fs.readFileSync(path.join(dist, f))).digest('hex')}  ${f}`);
 fs.writeFileSync(path.join(dist, 'SHA256SUMS.txt'), sums.join('\n') + '\n');
 for (const f of [...files, 'SHA256SUMS.txt']) {
