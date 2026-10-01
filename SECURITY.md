@@ -9,22 +9,21 @@
 
 ## Reporting a vulnerability
 
-Please **do not** report security problems in public issues, discussions or
+Please do not report security vulnerabilities in public issues, discussions or
 pull requests, and do not publish exploit details before a fix is available.
 
-Report privately:
-
-- GitHub: **Security → Report a vulnerability** in this repository (private advisory), or
-- e-mail: **satyrdigital@gmail.com** with the subject "MDVibe security".
+Report privately through GitHub: **Security → Report a vulnerability** in this
+repository.
 
 Please include:
 
-- MDVibe version and Windows version;
-- what an attacker can achieve and the steps to reproduce;
-- a minimal Markdown file or proof of concept, if possible.
+- MDVibe version;
+- operating system and version;
+- impact — what an attacker can achieve;
+- reproduction steps;
+- a minimal Markdown file or proof of concept, if applicable.
 
-I aim to acknowledge reports within 5 working days and to agree on a
-disclosure date once a fix is ready. Thank you for helping keep MDVibe users safe.
+Reports are reviewed as time permits. Thank you for helping keep MDVibe users safe.
 
 ## Scope
 
