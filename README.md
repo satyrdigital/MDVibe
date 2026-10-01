@@ -17,7 +17,9 @@
   <a href="https://github.com/satyrdigital/mdvibe/actions/workflows/ci.yml"><img alt="Build" src="https://github.com/satyrdigital/mdvibe/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-<!-- Hero screenshot goes here once available: docs/site/assets/hero-light.png -->
+<p align="center">
+  <img src="docs/site/assets/screens/hero-light.webp" width="820" alt="MDVibe showing a Markdown document">
+</p>
 
 ## Features
 

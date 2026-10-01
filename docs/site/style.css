@@ -96,40 +96,15 @@ section.alt { background: var(--surface); border-top: 1px solid var(--line); bor
 .cta { margin-bottom: 14px; }
 .meta { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 
-/* Illustrations (placeholders until real screenshots are added) */
+/* Screenshots */
 .shot { margin: 0; }
-.win { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 24px 60px rgba(27, 30, 43, 0.14); overflow: hidden; }
-.win-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-.win-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
-.win-bar em { margin-left: 10px; font-style: normal; font-size: 12px; color: var(--muted); font-weight: 700; }
-.win-body { display: grid; grid-template-columns: 30% 1fr; min-height: 320px; }
-.win-side { border-right: 1px solid var(--line); padding: 16px 12px; display: flex; flex-direction: column; gap: 10px; }
-.win-side .label { height: 6px; width: 40%; background: var(--line); border-radius: 3px; }
-.win-side i, .win-doc i, .mini i { display: block; height: 8px; border-radius: 4px; background: var(--line); }
-.win-side i.on { background: var(--secondary); height: 16px; }
-.win-side i.sub { margin-left: 14px; }
-.win-doc { padding: 22px 26px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; }
-.win-doc .h1 { height: 20px; width: 55%; border-radius: 4px; background: var(--primary-strong); margin-bottom: 6px; }
-.win-doc .h2 { height: 14px; width: 38%; border-radius: 4px; background: var(--primary-strong); opacity: 0.85; margin-top: 8px; }
-.win-doc i.short, .mini i.short { width: 62%; }
-.win-doc .code, .mini .code { position: relative; background: var(--code); border: 1px solid var(--line); border-radius: 6px; padding: 26px 14px 14px; display: flex; flex-direction: column; gap: 8px; margin: 6px 0; }
-.win-doc .code .lang-tag { position: absolute; top: 9px; left: 14px; width: 60px; height: 6px; border-radius: 3px; background: #d4d2ca; }
-.win-doc .code i { background: #d9d7cf; }
-.win-doc .code i.k { width: 70%; background: linear-gradient(90deg, #c2255c 0 22%, #d9d7cf 22% 100%); }
-.win-doc .code i.s { background: linear-gradient(90deg, #d9d7cf 0 30%, #2b7a3d 30% 70%, #d9d7cf 70%); }
-
-.screens { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.screens { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .screen { margin: 0; }
-.mini { border-radius: 12px; border: 1px solid var(--line); padding: 26px; min-height: 220px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 12px 30px rgba(27, 30, 43, 0.08); }
-.mini b { display: block; height: 18px; width: 50%; border-radius: 4px; margin-bottom: 6px; }
-.mini.light { background: var(--bg); }
-.mini.light b { background: var(--primary-strong); }
-.mini.dark { background: #14161f; border-color: #2e3246; }
-.mini.dark b { background: #a9b9ff; }
-.mini.dark i { background: #2e3246; }
-.mini.dark .code { background: #0f1118; border-color: #2e3246; }
-.mini .code { padding: 14px; }
 .caption { color: var(--muted); font-size: 15px; text-align: center; margin: 14px 0 0; }
+
+/* Real screenshots */
+.shot img, .screen img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 24px 60px rgba(27, 30, 43, 0.14); }
+.screen img { box-shadow: 0 12px 30px rgba(27, 30, 43, 0.1); }
 
 /* Closer look (real screenshots) */
 .look { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 32px; align-items: start; }
